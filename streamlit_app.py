@@ -345,7 +345,7 @@ def _init(key, val):
     if key not in st.session_state:
         st.session_state[key] = val
 
-_init("backend_url",    "http://localhost:8000")
+_init("backend_url",    "https://enterprise-financial-engine.onrender.com")
 _init("task_id",        None)
 _init("poll_status",    None)   # "Processing" | "Completed" | "Failed"
 _init("poll_count",     0)
@@ -504,7 +504,7 @@ with st.sidebar:
         st.markdown('<div class="status-badge status-online"><div class="status-dot dot-green"></div>Backend: ONLINE</div>', unsafe_allow_html=True)
     else:
         st.markdown('<div class="status-badge status-offline"><div class="status-dot dot-red"></div>Backend: OFFLINE</div>', unsafe_allow_html=True)
-        st.warning("⚠️ Start FastAPI: `uvicorn main:app --reload`", icon=None)
+        st.warning("⚠️ Backend offline — Render instance might be sleeping, wait 50 seconds.", icon=None)
 
     st.markdown('<div style="margin-top:0.4rem;"><span class="db-tag">🗄️ financial_data.db</span></div>',
                 unsafe_allow_html=True)

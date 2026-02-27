@@ -1,199 +1,36 @@
 # ═══════════════════════════════════════════════════════════════
 # requirements.txt  —  Enterprise Financial Engine
-# Render.com deployment — Python 3.11
-# All dependency conflicts resolved
+# Strategy: Only DIRECT dependencies — pip resolves sub-deps
+# This avoids ALL version conflict chains (tiktoken, openai, otel)
 # ═══════════════════════════════════════════════════════════════
 
-
-# ── CrewAI Core (anchor — all versions flow from this) ────────
+# ── Core AI Framework ─────────────────────────────────────────
 crewai==1.9.3
 crewai-tools==1.9.3
 
-
-# ── FastAPI Backend ───────────────────────────────────────────
+# ── Backend ───────────────────────────────────────────────────
 fastapi==0.133.0
 uvicorn==0.41.0
 python-multipart==0.0.22
-starlette==0.52.1
 
-
-# ── Streamlit Frontend ────────────────────────────────────────
+# ── Frontend ──────────────────────────────────────────────────
 streamlit==1.54.0
 
-
-# ── Groq LLM ─────────────────────────────────────────────────
+# ── LLM ──────────────────────────────────────────────────────
 groq==0.37.1
-litellm==1.72.0
 
-
-# ── PDF Processing (tools.py) ─────────────────────────────────
+# ── PDF ───────────────────────────────────────────────────────
 PyPDF2==3.0.1
 
-
-# ── Environment Variables ─────────────────────────────────────
+# ── Environment ───────────────────────────────────────────────
 python-dotenv==1.1.1
 
-
-# ── LangChain ────────────────────────────────────────────────
-# REMOVED langchain-openai==1.1.10 — it requires openai>=2.20.0
-# but crewai==1.9.3 requires openai~=1.83.0 (v1.x) — direct conflict
+# ── LangChain (only what code actually imports) ───────────────
 langchain==1.2.10
 langchain-core==1.2.16
 langchain-groq==1.1.2
 langchain-text-splitters==1.1.1
 langsmith==0.3.45
 
-
-# ── OpenAI SDK (v1.x — crewai 1.9.3 requires ~=1.83.0) ───────
-# DO NOT add langchain-openai — it forces openai>=2.x (incompatible)
-openai==1.83.0
-
-
-# ── Pydantic v2 ──────────────────────────────────────────────
-pydantic==2.11.10
-pydantic-settings==2.10.1
-pydantic_core==2.33.2
-
-
-# ── HTTP & Networking ─────────────────────────────────────────
+# ── HTTP ──────────────────────────────────────────────────────
 requests==2.32.5
-httpx==0.28.1
-httpcore==1.0.9
-httpx-sse==0.4.3
-anyio==4.12.1
-certifi==2026.2.25
-urllib3==2.6.3
-charset-normalizer==3.4.4
-idna==3.11
-aiohttp==3.13.3
-aiohappyeyeballs==2.6.1
-aiosignal==1.4.0
-frozenlist==1.8.0
-multidict==6.7.1
-yarl==1.22.0
-propcache==0.4.1
-sniffio==1.3.1
-
-
-# ── OpenTelemetry ─────────────────────────────────────────────
-opentelemetry-api==1.34.1
-opentelemetry-sdk==1.34.1
-opentelemetry-exporter-otlp-proto-common==1.34.1
-opentelemetry-exporter-otlp-proto-grpc==1.34.1
-opentelemetry-exporter-otlp-proto-http==1.34.1
-opentelemetry-instrumentation==0.60b1
-opentelemetry-instrumentation-fastapi==0.60b1
-opentelemetry-instrumentation-asgi==0.60b1
-opentelemetry-proto==1.34.1
-opentelemetry-semantic-conventions==0.55b1
-opentelemetry-util-http==0.60b1
-
-
-# ── Data & Utilities ─────────────────────────────────────────
-numpy==2.4.2
-pandas==2.3.3
-Jinja2==3.1.6
-click==8.1.8
-jsonschema==4.26.0
-pillow==12.1.1
-PyYAML==6.0.3
-rich==13.9.4
-packaging==25.0
-typing_extensions==4.15.0
-python-dateutil==2.9.0.post0
-pytz==2025.2
-regex==2024.9.11
-tenacity==9.1.4
-tqdm==4.67.3
-six==1.17.0
-mpmath==1.3.0
-
-
-# ── Tokenizer — FIXED (crewai-tools 1.9.3 needs ~=0.8.0) ─────
-tiktoken==0.8.0
-
-
-# ── Embeddings & ML ───────────────────────────────────────────
-tokenizers==0.20.3
-onnxruntime==1.22.0
-
-
-# ── ChromaDB ─────────────────────────────────────────────────
-chromadb==1.1.1
-chroma-hnswlib==0.7.6
-orjson==3.11.7
-mmh3==5.2.0
-xxhash==3.6.0
-flatbuffers==25.12.19
-
-
-# ── Database ─────────────────────────────────────────────────
-SQLAlchemy==2.0.47
-alembic==1.18.4
-aiosqlite==0.21.0
-
-
-# ── Google Auth ───────────────────────────────────────────────
-google-auth==2.48.0
-googleapis-common-protos==1.72.0
-google-api-core==2.30.0
-grpcio==1.78.1
-grpcio-status==1.71.2
-protobuf==5.29.6
-proto-plus==1.27.1
-
-
-# ── CrewAI Internals ─────────────────────────────────────────
-posthog==3.25.0
-backoff==2.2.1
-pysbd==0.3.4
-json_repair==0.25.2
-diskcache==5.6.3
-portalocker==2.7.0
-filelock==3.24.3
-pyvis==0.3.2
-instructor==1.12.0
-mcp==1.23.3
-cohere==5.20.7
-langchain-cohere==0.3.5
-
-
-# ── Misc ─────────────────────────────────────────────────────
-annotated-types==0.7.0
-attrs==25.4.0
-cachetools==6.2.6
-coloredlogs==15.0.1
-distro==1.9.0
-docstring_parser==0.17.0
-fsspec==2026.2.0
-humanfriendly==10.0
-importlib_metadata==8.7.1
-importlib_resources==6.5.2
-jiter==0.10.0
-jsonpatch==1.33
-jsonpointer==3.0.0
-marshmallow==3.26.2
-monotonic==1.6
-narwhals==2.17.0
-networkx==3.6.1
-overrides==7.7.0
-platformdirs==4.9.2
-pyparsing==3.3.2
-referencing==0.37.0
-rpds-py==0.30.0
-schema==0.7.8
-shellingham==1.5.4
-smmap==5.0.2
-sniffio==1.3.1
-sortedcontainers==2.4.0
-tabulate==0.9.0
-tomlkit==0.14.0
-typer==0.23.1
-typing-inspect==0.9.0
-typing-inspection==0.4.2
-uuid_utils==0.14.1
-validators==0.35.0
-wrapt==1.17.3
-zstandard==0.23.0
-deprecation==2.1.0
-decorator==5.2.1

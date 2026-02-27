@@ -74,7 +74,6 @@ crewai-tools==0.47.1
 # ── Pydantic — PINNED v1 (crewai 0.130.0 hard requirement) ───
 # ⚠️  DO NOT upgrade to pydantic>=2.0.0 — crewai will break
 pydantic==1.10.13
-pydantic_core==2.8.0
 
 
 # ── FastAPI Backend (main.py) ─────────────────────────────────
@@ -150,7 +149,7 @@ google-api-core==2.10.0
 
 
 # ── ONNX Runtime (crewai embeddings / tokenizer) ─────────────
-onnxruntime==1.18.0
+onnxruntime==1.22.0
 
 
 # ── sqlite3 ───────────────────────────────────────────────────

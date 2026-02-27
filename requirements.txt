@@ -60,17 +60,17 @@ fastapi==0.110.3
 uvicorn==0.29.0
 streamlit>=1.32.0
 
-# --- Core Dependencies ---
+# --- Core Dependencies (Let PIP resolve versions) ---
 pydantic>=2.4.2
-onnxruntime==1.20.1
-chromadb>=0.5.23
-tiktoken>=0.7.0
+onnxruntime
+chromadb
+tiktoken
 
 # --- AI Models & Integration ---
 groq>=0.9.0
 litellm>=1.72.0
 langchain-google-genai==1.0.3
-langchain-core<0.2.0,>=0.1.45
+langchain-core
 
 # --- Utilities ---
 PyPDF2==3.0.1

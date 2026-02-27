@@ -53,27 +53,28 @@
 # python-multipart==0.0.9
 
 
-# --- Primary Frameworks (Strictly Pinned) ---
+# --- Core Frameworks (Aligned for Cloud) ---
 crewai==0.130.0
-crewai-tools==0.47.1
+crewai-tools==0.1.20
+embedchain>=0.1.128
 fastapi==0.110.3
 uvicorn==0.29.0
 streamlit>=1.32.0
 
-# --- Core Logic & AI (Let Pip resolve sub-dependencies) ---
+# --- Key Dependencies (Resolved Conflicts) ---
 pydantic>=2.4.2
+onnxruntime==1.22.0
+chromadb>=0.5.23
+tiktoken>=0.8.0
+
+# --- AI & Utilities ---
 groq>=0.9.0
 litellm>=1.72.0
 langchain-google-genai==1.0.3
-onnxruntime==1.22.0
-
-# --- File & Network Utilities ---
 PyPDF2==3.0.1
 python-dotenv==1.0.1
 python-multipart==0.0.9
 requests>=2.31.0
-
-# --- Data Handling ---
 numpy==1.26.4
 pandas==2.2.2
 pillow==10.3.0

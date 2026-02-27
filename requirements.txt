@@ -1,11 +1,11 @@
 # ═══════════════════════════════════════════════════════════════
 # requirements.txt  —  Enterprise Financial Engine
-# Optimized for Render.com deployment (Python 3.11)
-# Conflict-free — let pip resolve sub-dependencies automatically
+# Render.com deployment — Python 3.11
+# All dependency conflicts resolved
 # ═══════════════════════════════════════════════════════════════
 
 
-# ── CrewAI Core (PINNED — everything else follows from this) ──
+# ── CrewAI Core (anchor — all versions flow from this) ────────
 crewai==1.9.3
 crewai-tools==1.9.3
 
@@ -35,15 +35,17 @@ python-dotenv==1.1.1
 
 
 # ── LangChain ────────────────────────────────────────────────
+# REMOVED langchain-openai==1.1.10 — it requires openai>=2.20.0
+# but crewai==1.9.3 requires openai~=1.83.0 (v1.x) — direct conflict
 langchain==1.2.10
 langchain-core==1.2.16
 langchain-groq==1.1.2
-langchain-openai==1.1.10
 langchain-text-splitters==1.1.1
 langsmith==0.3.45
 
 
-# ── OpenAI SDK ───────────────────────────────────────────────
+# ── OpenAI SDK (v1.x — crewai 1.9.3 requires ~=1.83.0) ───────
+# DO NOT add langchain-openai — it forces openai>=2.x (incompatible)
 openai==1.83.0
 
 
@@ -56,6 +58,8 @@ pydantic_core==2.33.2
 # ── HTTP & Networking ─────────────────────────────────────────
 requests==2.32.5
 httpx==0.28.1
+httpcore==1.0.9
+httpx-sse==0.4.3
 anyio==4.12.1
 certifi==2026.2.25
 urllib3==2.6.3
@@ -67,6 +71,8 @@ aiosignal==1.4.0
 frozenlist==1.8.0
 multidict==6.7.1
 yarl==1.22.0
+propcache==0.4.1
+sniffio==1.3.1
 
 
 # ── OpenTelemetry ─────────────────────────────────────────────
@@ -99,11 +105,11 @@ pytz==2025.2
 regex==2024.9.11
 tenacity==9.1.4
 tqdm==4.67.3
+six==1.17.0
+mpmath==1.3.0
 
 
 # ── Tokenizer — FIXED (crewai-tools 1.9.3 needs ~=0.8.0) ─────
-# tiktoken==0.12.0 was causing build failure on Render
-# crewai-tools==1.9.3 requires tiktoken~=0.8.0
 tiktoken==0.8.0
 
 
@@ -118,13 +124,13 @@ chroma-hnswlib==0.7.6
 orjson==3.11.7
 mmh3==5.2.0
 xxhash==3.6.0
+flatbuffers==25.12.19
 
 
 # ── Database ─────────────────────────────────────────────────
 SQLAlchemy==2.0.47
 alembic==1.18.4
 aiosqlite==0.21.0
-# sqlite3 is Python built-in — no pip install needed
 
 
 # ── Google Auth ───────────────────────────────────────────────
@@ -134,6 +140,7 @@ google-api-core==2.30.0
 grpcio==1.78.1
 grpcio-status==1.71.2
 protobuf==5.29.6
+proto-plus==1.27.1
 
 
 # ── CrewAI Internals ─────────────────────────────────────────
@@ -158,10 +165,10 @@ cachetools==6.2.6
 coloredlogs==15.0.1
 distro==1.9.0
 docstring_parser==0.17.0
-flatbuffers==25.12.19
 fsspec==2026.2.0
 humanfriendly==10.0
 importlib_metadata==8.7.1
+importlib_resources==6.5.2
 jiter==0.10.0
 jsonpatch==1.33
 jsonpointer==3.0.0
@@ -176,6 +183,7 @@ referencing==0.37.0
 rpds-py==0.30.0
 schema==0.7.8
 shellingham==1.5.4
+smmap==5.0.2
 sniffio==1.3.1
 sortedcontainers==2.4.0
 tabulate==0.9.0
@@ -187,13 +195,5 @@ uuid_utils==0.14.1
 validators==0.35.0
 wrapt==1.17.3
 zstandard==0.23.0
-proto-plus==1.27.1
-propcache==0.4.1
-mpmath==1.3.0
-httpcore==1.0.9
-httpx-sse==0.4.3
-six==1.17.0
-smmap==5.0.2
-importlib_resources==6.5.2
 deprecation==2.1.0
 decorator==5.2.1

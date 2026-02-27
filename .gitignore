@@ -1,0 +1,18 @@
+# Credentials & DB
+.env
+financial_data.db
+
+# Virtual Environment (Very Important!)
+crewai/
+venv/
+.venv/
+
+# Temporary Data & Folders
+data/
+outputs/
+__pycache__/
+*.pyc
+
+# IDE Settings
+.vscode/
+.idea/

@@ -2,6 +2,13 @@
 
 <div align="center">
 
+**Status:** 🚀 [LIVE ON RENDER](https://enterprise-financial-engine-1.onrender.com/) | ⚡ Powered by Multi-Agent CrewAI & Groq
+
+## 🔗 [Explore the Live Application Here](https://enterprise-financial-engine-1.onrender.com/)
+*(Note: As this is hosted on a Free Tier, please allow ~50 seconds for the server to "wake up" during the initial load.)*
+
+<br>
+
 **AI-Powered Multi-Agent Financial Document Analyzer**
 
 *Built with CrewAI · Groq LLaMA-4 · FastAPI · Streamlit · SQLite*
